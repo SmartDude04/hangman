@@ -29,7 +29,7 @@ public class WordBank
         }
         catch (FileNotFoundException e)
         {
-            System.out.println("An error occurred:");
+            System.err.println("An error occurred:");
         }
     }
 

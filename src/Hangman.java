@@ -9,17 +9,10 @@ public class Hangman
     private final ArrayList<Character> prevGuesses;
     private final ArrayList<Character> wrongGuesses;
 
-    public Hangman(int difficulty, int numWords, boolean limitGuesses)
+    public Hangman(int difficulty, int numWords, int numGuesses)
     {
         guessesUsed = 0;
-        if (limitGuesses)
-        {
-            numGuesses = 14;
-        }
-        else
-        {
-            numGuesses = -1;
-        }
+        this.numGuesses = Math.max(numGuesses, -1);
 
         prevGuesses = new ArrayList<Character>(14);
         wrongGuesses = new ArrayList<Character>();
@@ -50,13 +43,14 @@ public class Hangman
 
     public void makeGuess(char letter)
     {
+
         // Check if the letter has been made before
         for (char prevLetter : prevGuesses)
         {
             if (prevLetter == letter)
             {
                 // Letter has been used. Notify the user and don't keep going
-                System.out.println("Letter has been guessed before! Try again.");
+                System.err.println("Letter has been guessed before! Try again.");
                 if (numGuesses != -1)
                 {
                     System.out.println("No guesses lost");
@@ -86,11 +80,11 @@ public class Hangman
         }
 
         // Update guesses vars
-        if (numGuesses != -1)
+        if (numGuesses != -1 && !placedIn)
         {
-            // Only gets updated if the numGuesses was active in the constructor
             numGuesses--;
         }
+
         prevGuesses.add(letter);
         guessesUsed++;
     }
