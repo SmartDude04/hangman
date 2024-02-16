@@ -4,7 +4,6 @@ public class Hangman
 {
     private String phrase;
     private String userProgress;
-    private final int difficulty;
     private int numGuesses;
     private int guessesUsed;
     private final ArrayList<Character> prevGuesses;
@@ -22,7 +21,6 @@ public class Hangman
             numGuesses = -1;
         }
 
-        this.difficulty = difficulty;
         prevGuesses = new ArrayList<Character>(14);
         wrongGuesses = new ArrayList<Character>();
 
