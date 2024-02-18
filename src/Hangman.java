@@ -44,6 +44,13 @@ public class Hangman
     public void makeGuess(char letter)
     {
 
+        // Error checking
+        if (!Character.isLetter(letter))
+        {
+            System.err.println("Value is not a letter!\nNo guesses lost");
+            return;
+        }
+
         // Check if the letter has been made before
         for (char prevLetter : prevGuesses)
         {

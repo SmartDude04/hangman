@@ -78,7 +78,9 @@ public class HangmanPlayer
 
             // Ask for a letter
             System.out.print("\nEnter a letter: ");
-            char letter = input.nextLine().charAt(0);
+            String guess = input.nextLine();
+            char letter = !guess.isEmpty() ? guess.charAt(0) : '1';
+
             // Update the game
             game.makeGuess(letter);
         }
